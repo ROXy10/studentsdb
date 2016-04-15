@@ -1,0 +1,35 @@
+/* Global Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+/* Status Message */
+.alert {
+    margin-top: 10px;
+}
+
+/* footer */
+#footer {
+    border-top: 1px solid #dddddd;
+    padding-top: 10px;
+}
+
+/* Groups Selector */
+#group-selector {
+    margin-top: 30px;
+}
+
+#group-selector select{
+    margin: 0;
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    height: 30px;
+    line-height: 30px;
+    color: #555555;
+}
+
+/*  Add Student Button */
+.col-sm-2 {
+    margin-top: 15px;
+}
