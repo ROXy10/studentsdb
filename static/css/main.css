@@ -6,6 +6,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Status Message */
 .alert {
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 /* footer */
@@ -17,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Groups Selector */
 #group-selector {
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 #group-selector select{
@@ -32,4 +34,15 @@ h1, h2, h3, h4, h5, h6 {
 /*  Add Student Button */
 .col-sm-2 {
     margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/*  Start Students Listing */
+.table {
+    margin-bottom: 10px;
+}
+
+.pagination {
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
