@@ -5,7 +5,7 @@ from django.http import HttpResponse, Http404
 
 
 def students_list(request):
-    return render(request, 'students_list.html', {})
+    return render(request, 'students/students_list.html', {})
 
 
 def students_add(request):
