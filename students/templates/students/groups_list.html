@@ -1,0 +1,94 @@
+{% extends "students/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block meta_title %}Групи{% endblock meta_title %}
+{% block title %}Групи{% endblock title %}
+{% block button %}
+    <div class="col-sm-2">
+        <!-- Add Student Button -->
+        <a class="btn btn-primary" href="{% url "groups_add" %}">Додати Групу</a>
+    </div>
+{% endblock button %}
+{% block content %}
+    <div>
+        <!-- Start Students Listing -->
+        <table class="table table-hover table-striped">
+            <tr>
+                <th># &uarr;</th>
+                <th>Назва &uarr;</th>
+                <th>Староста &uarr;</th>
+                <th>Дії</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><a title="Редагувати" href="#">МтМ-21</a></td>
+                <td><a title="Редагувати" href="#">Ячменев Олег</a></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Дія
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Відвідування</a></li>
+                            <li><a href="#">Редагувати</a></li>
+                            <li><a href="#">Видалити</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><a title="Редагувати" href="#">МтМ-22</a></td>
+                <td><a title="Редагувати" href="#">Віталій Подоба</a></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Дія
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Відвідування</a></li>
+                            <li><a href="#">Редагувати</a></li>
+                            <li><a href="#">Видалити</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><a title="Редагувати" href="#">МтМ-23</a></td>
+                <td><a title="Редагувати" href="#">Іванов Андрій</a></td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Дія
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Відвідування</a></li>
+                            <li><a href="#">Редагувати</a></li>
+                            <li><a href="#">Видалити</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <nav>
+            <ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">Далі</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Students Listing -->
+    </div>
+{% endblock content %}
