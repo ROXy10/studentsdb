@@ -19,6 +19,7 @@ class Student(models.Model):
     photo = models.ImageField(blank=True, verbose_name=u"Дото", null=True)
     ticket = models.CharField(max_length=256, blank=True, verbose_name=u"Білет")
     notes = models.TextField(blank=True, verbose_name=u"Додаткові нотатки")
+    #student_group = models.ForeignKey('Group', verbose_name=u'Група', blank=False, null=True, on_delete=models.PROTECT)
 
 
     def __unicode__(self):
