@@ -14,14 +14,38 @@
     <div>
         <!-- Start Students Listing -->
         <table class="table table-hover table-striped">
-            <tr>
-                <th><a href=""></a>№ &uarr;</th>
-                <th>Фото</th>
-                <th>Прізвище &uarr;</th>
-                <th>Ім'я &uarr;</th>
-                <th>№ Білету &uarr;</th>
-                <th>Дії</th>
-            </tr>
+            {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+                <thead>
+                <tr>
+                    <th>
+                        <a href="{% url "home" %}?order_by=id{% if order_by == 'id' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                            № {% if order_by == 'id' and reverse != '1' %}&uarr;
+                            {% elif order_by == 'id' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>Фото</th>
+                    <th>
+                        <a href="{% url "home" %}{% if order_by == '' and reverse != '1' %}?reverse=1{% endif %}">
+                            Прізвище {% if order_by == '' and reverse != '1' %}&uarr;
+                            {% elif order_by == '' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{% url "home" %}?order_by=first_name{% if order_by == 'first_name' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                            Ім'я {% if order_by == 'first_name' and reverse != '1' %}&uarr;
+                            {% elif order_by == 'first_name' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{% url "home" %}?order_by=ticket{% if order_by == 'ticket' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                            № Білету {% if order_by == 'ticket' and reverse != '1' %}&uarr;
+                            {% elif order_by == 'ticket' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>Дії</th>
+                </tr>
+                </thead>
+            {% endwith %}
             <tbody>
             {% for student in students %}
                 <tr>
@@ -29,7 +53,8 @@
                     {% if student.photo %}
                         <td><img height="30" width="30" src="{{ student.photo.url }}" class="img-circle"></td>
                     {% else %}
-                        <td><img height="30" width="30" src="{% static "img/default_user.png" %}" class="img-circle"></td>
+                        <td><img height="30" width="30" src="{% static "img/default_user.png" %}"
+                                 class="img-circle"></td>
                     {% endif %}
                     <td><a title="Редагувати"
                            href="{% url "students_edit" student.id %}">{{ student.last_name }}</a></td>
