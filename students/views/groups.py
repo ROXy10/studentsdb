@@ -1,13 +1,34 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse
+
+from ..models import Group
 
 # Views for Groups
 
 
 def groups_list(request):
-    return render(request, 'students/groups_list.html')
+    groups = Group.objects.all()
+    # try to order group list
+    order_by = request.GET.get('order_by', '')
+    if order_by in ('', 'leader', 'id'):
+        if order_by == '':
+            groups = groups.order_by('leader')
+        else:
+            groups = groups.order_by(order_by)
+        if request.GET.get('reverse', '') == '1':
+            groups = groups.reverse()
+
+    try:
+        num_page = int(request.GET.get('num'))
+    except TypeError:
+        num_page = 8
+
+    if request.is_ajax():
+        return render(request, 'students/groups_list.html', {"groups": groups[num_page: num_page + 1]})
+    else:
+        return render(request, 'students/groups_list.html', {"groups": groups[:num_page]})
 
 
 def groups_add(request):

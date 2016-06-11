@@ -14,69 +14,54 @@
     <div>
         <!-- Start Students Listing -->
         <table class="table table-hover table-striped">
-            <tr>
-                <th># &uarr;</th>
-                <th>Назва &uarr;</th>
-                <th>Староста &uarr;</th>
-                <th>Дії</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><a title="Редагувати" href="#">МтМ-21</a></td>
-                <td><a title="Редагувати" href="#">Ячменев Олег</a></td>
-                <td>
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Дія
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Відвідування</a></li>
-                            <li><a href="#">Редагувати</a></li>
-                            <li><a href="#">Видалити</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td><a title="Редагувати" href="#">МтМ-22</a></td>
-                <td><a title="Редагувати" href="#">Віталій Подоба</a></td>
-                <td>
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Дія
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Відвідування</a></li>
-                            <li><a href="#">Редагувати</a></li>
-                            <li><a href="#">Видалити</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td><a title="Редагувати" href="#">МтМ-23</a></td>
-                <td><a title="Редагувати" href="#">Іванов Андрій</a></td>
-                <td>
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Дія
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Відвідування</a></li>
-                            <li><a href="#">Редагувати</a></li>
-                            <li><a href="#">Видалити</a></li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
+            {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+                <thead>
+                <tr>
+                    <th>
+                        <a href="{% url "groups" %}?order_by=id{% if order_by == 'id' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                            № {% if order_by == 'id' and reverse != '1' %}&uarr;
+                            {% elif order_by == 'id' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{% url "groups" %}{% if order_by == '' and reverse != '1' %}?reverse=1{% endif %}">
+                            Назва {% if order_by == '' and reverse != '1' %}&uarr;
+                            {% elif order_by == '' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>
+                        <a href="{% url "groups" %}?order_by=leader{% if order_by == 'leader' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                            Староста{% if order_by == 'leader' and reverse != '1' %}&uarr;
+                            {% elif order_by == 'leader' and reverse == '1' %}&darr;{% endif %}
+                        </a>
+                    </th>
+                    <th>Дії</th>
+                </tr>
+                </thead>
+            {% endwith %}
+            <tbody>
+            {% for group in groups %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a title="Редагувати" href="{% url "groups_edit" group.id %}">{{ group.title }}</a></td>
+                    <td><a title="Редагувати" href="{% url "groups_edit" group.id %}">{{ group.leader }}</a></td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Дія
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Відвідування</a></li>
+                                <li><a href="#">Редагувати</a></li>
+                                <li><a href="#">Видалити</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
         </table>
         <!-- End Students Listing -->
         {% include "students/pagination.html" %}

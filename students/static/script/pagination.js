@@ -1,9 +1,9 @@
 /**
  * Created by roxy on 19.05.16.
  */
-var num = 1;
+var num = 8;
 $(window).scroll(function() {
-     if($(window).scrollTop() + $(window).height() == $(document).height()) {
+    if($(window).scrollTop() + $(window).height() == $(document).height()) {
     $.ajax({
         url: '', 
         type: 'get',
