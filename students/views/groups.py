@@ -3,7 +3,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from ..models import Group
+from ..models.groups import Group
 
 # Views for Groups
 

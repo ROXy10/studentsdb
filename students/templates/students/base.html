@@ -48,6 +48,8 @@
                 <li role="presentation" {% if url_journal in request.path %}class="active"{% endif %}><a href="{{ url_journal }}">Відвідування</a></li>
                 {% url "groups" as url_groups %}
                 <li role="presentation" {% if url_groups in request.path %}class="active"{% endif %}><a href="{{ url_groups }}">Групи</a></li>
+                {% url "exams" as url_exams %}
+                <li role="presentation" {% if url_exams in request.path %}class="active"{% endif %}><a href="{{ url_exams }}">Іспити</a></li>
             </ul>
         </div>
     </div>
