@@ -43,13 +43,17 @@
         <div class="col-md-12">
             <ul class="nav nav-tabs" role="tablist">
                 {% url "home" as url_home %}
-                <li role="presentation" {% if request.path == url_home %}class="active"{% endif %}><a href="{{ url_home }}">Студенти</a></li>
+                <li role="presentation" {% if request.path == url_home %}class="active"{% endif %}><a
+                        href="{{ url_home }}">Студенти</a></li>
                 {% url "journal" as url_journal %}
-                <li role="presentation" {% if url_journal in request.path %}class="active"{% endif %}><a href="{{ url_journal }}">Відвідування</a></li>
+                <li role="presentation" {% if url_journal in request.path %}class="active"{% endif %}><a
+                        href="{{ url_journal }}">Відвідування</a></li>
                 {% url "groups" as url_groups %}
-                <li role="presentation" {% if url_groups in request.path %}class="active"{% endif %}><a href="{{ url_groups }}">Групи</a></li>
+                <li role="presentation" {% if url_groups in request.path %}class="active"{% endif %}><a
+                        href="{{ url_groups }}">Групи</a></li>
                 {% url "exams" as url_exams %}
-                <li role="presentation" {% if url_exams in request.path %}class="active"{% endif %}><a href="{{ url_exams }}">Іспити</a></li>
+                <li role="presentation" {% if url_exams in request.path %}class="active"{% endif %}><a
+                        href="{{ url_exams }}">Іспити</a></li>
             </ul>
         </div>
     </div>
@@ -58,11 +62,15 @@
     <div class="row" id="content-columns">
         <div class="col-md-12" id="content-column">
             <!-- Status Message -->
-            {% comment "Not used alert so far" %}
-            <div class="alert alert-warning" role="alert">
-                Зміни скасовано.
-            </div>
-            {% endcomment %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <div class="row">
                 <div class="col-sm-10">
                     <h2>{% block title %}{% endblock title %}</h2>
