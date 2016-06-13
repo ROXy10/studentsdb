@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'students',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -114,3 +115,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+
+# email settings
+# please, set here you smtp server details and your admin email
+from .email_info import *
+
+# crispy form
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
