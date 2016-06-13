@@ -14,9 +14,7 @@ from studentsdb.settings import ADMIN_EMAIL
 
 
 class ContactForm(forms.Form):
-
     def __init__(self, *args, **kwargs):
-
         # call original initializator
         super(ContactForm, self).__init__(*args, **kwargs)
         # this helper object allows us to customize form
@@ -28,8 +26,8 @@ class ContactForm(forms.Form):
         # twitter bootstrap styles
         self.helper.help_text_inline = True
         self.helper.html5_required = True
-        self.helper.label_class = 'col-sm-2 control-label'
-        self.helper.field_class = 'col-sm-10'
+        self.helper.label_class = 'col-sm-4 control-label'
+        self.helper.field_class = 'col-sm-4'
         # form buttons
         self.helper.add_input(Submit('send_button', u'Надіслати'))
 
@@ -39,7 +37,6 @@ class ContactForm(forms.Form):
 
 
 def contact_admin(request):
-
     # check if form was posted
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -54,8 +51,8 @@ def contact_admin(request):
             try:
                 send_mail(subject, message, from_email, [ADMIN_EMAIL])
             except Exception:
-                messages.success(request,u'Під час відправки листа виникла непередбачувана '\
-                                        u'помилка. Спробуйте скористатись даною формою пізніше.')
+                messages.success(request, u'Під час відправки листа виникла непередбачувана ' \
+                                          u'помилка. Спробуйте скористатись даною формою пізніше.')
             else:
                 messages.success(request, u'Повідомлення успішно надіслане!')
                 # redirect to same contact page with success message
