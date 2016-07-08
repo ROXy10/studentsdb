@@ -3,8 +3,8 @@
 {% load static from staticfiles %}
 {% load crispy_forms_tags %}
 
-{% block meta_title %}Зв'язок із Адміністратором{% endblock meta_title %}
-{% block title %}Зв'язок із Адміністратором{% endblock title %}
+{% block meta_title %}Редагувати Студента{% endblock meta_title %}
+{% block title %}Редагувати Студента{% endblock title %}
 !-- Status Message -->
 {% if messages %}
     <ul class="messages">
@@ -16,7 +16,7 @@
     </ul>
 {% endif %}
 {% block content %}
-        {% crispy form %}
+    {% crispy form %}
 {% endblock content %}
 
 

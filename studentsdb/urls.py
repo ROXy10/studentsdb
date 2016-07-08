@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # Students urls
     url(r'^$', students.students_list, name='home'),
-    url(r'^students/add/$', students.students_add, name='students_add'),
-    url(r'^students/(?P<sid>\d+)/edit/$', students.students_edit, name='students_edit'),
+    url(r'^students/add/$', students.StudentCreateView.as_view(), name='students_add'),
+    url(r'^students/(?P<pk>\d+)/edit/$', students.StudentUpdateView.as_view(), name='students_edit'),
     url(r'^students/(?P<sid>\d+)/delete/$', students.students_delete, name='students_delete'),
 
     # Groups urls
@@ -45,7 +45,10 @@ urlpatterns = [
     url(r'^exams/(?P<sid>\d+)/delete/$', exams.exams_delete, name='exams_delete'),
 
     # Contact Admin Form
-    url(r'^contact-admin/$', contact_admin.contact_admin, name='contact_admin'),
+    #url(r'^contact-admin/$', contact_admin.contact_admin, name='contact_admin'),
+
+    # Contact Admin Form class
+    url(r'^contact-admin/$', contact_admin.ContactView.as_view(), name='contact_admin'),
 ]
 
 if DEBUG:

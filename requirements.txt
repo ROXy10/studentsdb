@@ -3,4 +3,3 @@ Pillow
 MySQL-python
 psycopg2
 django-crispy-forms
-
