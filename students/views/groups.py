@@ -2,10 +2,20 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
+from django.contrib import messages
+from django.views.generic import UpdateView, CreateView, DeleteView
 
 from ..models.groups import Group
 
-# Views for Groups
+# Group delete class
+class GroupDeleteView(DeleteView):
+     model = Group
+     template_name = 'students/group_confirm_delete.html'
+
+     def get_success_url(self):
+         messages.success(self.request, u'Студента успішно видалено!')
+         return reverse('home')
 
 
 def groups_list(request):

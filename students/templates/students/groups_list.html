@@ -53,9 +53,8 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Відвідування</a></li>
-                                <li><a href="#">Редагувати</a></li>
-                                <li><a href="#">Видалити</a></li>
+                                <li><a href="{% url "groups_edit" group.id %}">Редагувати</a></li>
+                                <li><a href="{% url "groups_delete" group.id %}">Видалити</a></li>
                             </ul>
                         </div>
                     </td>

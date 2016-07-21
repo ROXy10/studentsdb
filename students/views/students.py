@@ -2,11 +2,11 @@
 from datetime import datetime
 from PIL import Image
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.views.generic import UpdateView, CreateView
+from django.views.generic import UpdateView, CreateView, DeleteView
 from django.forms import ModelForm
 
 from crispy_forms.helper import FormHelper
@@ -15,6 +15,16 @@ from crispy_forms.bootstrap import FormActions, Div
 
 from ..models.students import Student
 from ..models.groups import Group
+
+
+# Students delete class
+class StudentDeleteView(DeleteView):
+     model = Student
+     template_name = 'students/students_confirm_delete.html'
+
+     def get_success_url(self):
+         messages.success(self.request, u'Студента успішно видалено!')
+         return reverse('home')
 
 
 # Students update cripsy form
@@ -200,8 +210,8 @@ def students_add(request):
         return render(request, 'students/students_add.html', {'groups': Group.objects.all().order_by('title')})
 
 
-def students_edit(request, sid):
-    return HttpResponse('<h1>Edit Student %s</h1>' % sid)
+#def students_edit(request, sid):
+    # return render(request, 'students/students_edit.html', {})
 
 
 def students_delete(reuest, sid):
